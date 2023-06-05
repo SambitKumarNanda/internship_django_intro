@@ -7,12 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    hi,this is data 
-    <h1>name: {{ name }}</h1>
-  {% if  False%}
-    <h2>This is a true statement</h2>
-  {% else %}
-    <h2> This is a false statement <h2>
-  {% endif %}
+    {% for i in data %}
+        <h2>{{ i.name }}</h2>
+        <h2>{{ i.framework }}</h2><br>
+    {% endfor %}
 </body>
 </html>

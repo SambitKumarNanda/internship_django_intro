@@ -22,6 +22,31 @@ def test_html_page(request):
         "name" : "Sambit",
         "framework2024" : "Python-Django",
         "framework2023" : "Java Springboot",
-        "university": "Silicon Institute of Technology"
+        "university": "KIIT"
     }
-    return render(request, "index.html",context=my_dict)
+    return render(request, "playground/index.html",context=my_dict)
+
+# Hello , {{name}}
+def test_hello_name(request,name):
+    return HttpResponse(f"Hello,{name}")
+
+# for loop
+def test_html_for_loop(request):
+    context={
+        "data":[{
+            "name": "SIT",
+            "framework": "Django"
+        },
+                {
+                    "name": "SIT",
+                    "framework": "Mern"
+                }]
+    }
+    return render(request,"playground/hello.html",context=context)
+
+def home_page(request):
+    return render(request,"playground/main.html")
+
+def about_page(request):
+    print(request.GET)
+    return render(request,"playground/about.html")

@@ -21,5 +21,5 @@ from playground import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("test-api/",include('playground.urls'))
+    path("playground/",include('playground.urls'))
 ]
