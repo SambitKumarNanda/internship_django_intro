@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 # model is meant by a table
-
+    
 
 class AddressDetailModel(models.Model):
     pincode = models.IntegerField()
@@ -34,6 +34,14 @@ class StudentContactInfo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+class AddressDetailModel(models.Model):
+    pincode = models.IntegerField()
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+
 # Name -> char
 # Rollno -> int
 # year_of_joining -> DateField
@@ -60,3 +68,14 @@ class StudentDetailModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class StudentPrevEducation(models.Model):
+    student = models.ForeignKey(StudentDetailModel, on_delete=models.CASCADE,related_name="student_prev_education",null=True,blank=True)
+    university = models.CharField(max_length=100)
+    degree = models.CharField(max_length=100)
+    percentage = models.IntegerField()
+    address = models.ForeignKey(AddressDetailModel, on_delete=models.CASCADE, related_name="student_prev_education_address", null=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
