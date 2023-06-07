@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 # model is meant by a table
 
@@ -20,6 +21,8 @@ student_number -> charfield
 gmail -> charfield                                
 
 """
+
+
 class StudentContactInfo(models.Model):
     father_name = models.CharField(max_length=100)
     father_number = models.CharField(max_length=10)
@@ -29,8 +32,6 @@ class StudentContactInfo(models.Model):
     gmail = models.EmailField(max_length=100)
 
     created_at = models.DateTimeField(auto_now_add=True)
-
-
 
 
 # Name -> char
@@ -47,10 +48,12 @@ class StudentDetailModel(models.Model):
     dob = models.DateField()
 
     # One to One Relation
-    contact_info = models.OneToOneField(StudentContactInfo, on_delete=models.CASCADE, related_name="student_detail_contact_info", null=True)
+    contact_info = models.OneToOneField(StudentContactInfo, on_delete=models.CASCADE,
+                                        related_name="student_detail_contact_info", null=True)
 
     # One to Many Relation
-    address = models.ForeignKey(AddressDetailModel, on_delete=models.CASCADE, related_name="student_detail_address_info", null=True, blank=True)
+    address = models.ForeignKey(AddressDetailModel, on_delete=models.CASCADE,
+                                related_name="student_detail_address_info", null=True, blank=True)
 
     # This is a mandatory field in all databases
     created_at = models.DateTimeField(auto_now_add=True)
