@@ -1,17 +1,8 @@
 from django.db import models
 
-
 # Create your models here.
 # model is meant by a table
     
-
-class AddressDetailModel(models.Model):
-    pincode = models.IntegerField()
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-
-
 """
 father_name -> charfield
 father_number -> charfield
@@ -40,7 +31,7 @@ class AddressDetailModel(models.Model):
     state = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)
 
 # Name -> char
 # Rollno -> int
@@ -76,6 +67,6 @@ class StudentPrevEducation(models.Model):
     university = models.CharField(max_length=100)
     degree = models.CharField(max_length=100)
     percentage = models.IntegerField()
-    address = models.ForeignKey(AddressDetailModel, on_delete=models.CASCADE, related_name="student_prev_education_address", null=True)
+    address = models.ForeignKey(AddressDetailModel, on_delete=models.CASCADE, related_name="student_prev_education_address", null=True,blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
